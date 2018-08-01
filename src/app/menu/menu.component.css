@@ -1,0 +1,33 @@
+
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+body{
+  margin: 0;
+  padding: 0;
+  background: #fff;
+
+  color: #fff;
+  font-family: Arial;
+  font-size: 12px;
+}
+
+.body{
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -40px;
+  bottom: -40px;
+  width: auto;
+  height: auto;
+  /*background-image: url(.../assets/wall2.jpg);*/
+  background-size: cover;
+  -webkit-filter: blur(0px);
+  z-index: 0;
+}
+#p{
+  color: red;
+  text-align: center;
+}
+
+

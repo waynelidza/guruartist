@@ -1,0 +1,153 @@
+
+<div class="container">
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#single">Add Single</a></li>
+    <li><a data-toggle="tab" href="#ab">Add Album</a></li>
+    <li><a data-toggle="tab" href="#vd">Add Video</a></li>
+    <li><a data-toggle="tab" href="#mv">Add Movie</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="single" class="tab-pane fade in active">
+      <h3>Create Single</h3>
+
+      <div class="container">
+        <form *ngIf="showform" #loginForm="ngForm" (ngSubmit)="uploadFinal($event) ">
+          <div>
+          <div class="form-group">
+            <label for="email">Song Tittle:</label>
+            <input  (focus)="clearError($event)"type="text" class="form-control" id="email" placeholder="Enter title" name="emaifl"[(ngModel)]="Upload.title" >
+            <!--<p> <span class="glyphicon glyphicon-asterisk"></span></p>-->
+          </div>
+
+          <div class="form-group">
+            <label for="email">Main Artist:</label>
+            <input  (focus)="clearError($event)"     type="text" class="form-control" id="emaild" placeholder="Enter Main Artist" name="emafil"[(ngModel)]="Upload.ArtistMain">
+          </div>
+          <div class="form-group">
+            <label for="email">Featured Artist:</label>
+            <input (focus)="clearError($event)" type="text" class="form-control" id="emaildddd" placeholder="Enter featured Artist" name="emfail"[(ngModel)]="Upload.featuredArtist">
+          </div>
+          <div class="form-group">
+            <!--<div class="dropdown">-->
+              <!--<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Genre-->
+                <!--<span class="caret"></span></button>-->
+              <!--<ul [(ngModel)]="Upload.genre" class="dropdown-menu">-->
+                <!--<li><a>Pop</a></li>-->
+                <!--<li><a>Dancehall</a></li>-->
+                          <!--<li><a>Gospel</a></li>-->
+                <!--<li><a>Hip Hop</a></li>-->
+              <!--</ul>-->
+            <!--</div>-->
+
+            <div class="form-group">
+              <label for="email">Genre:</label>
+              <input (focus)="clearError($event)" type="text" class="form-control" id="emailddddgg" placeholder="Enter email" name="emfail"[(ngModel)]="Upload.genre">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="text">Realese Date:</label>
+            <ng-datepicker (click)="clearErrorme($event)"  name="date" [(ngModel)]="Upload.ReleaseDate" >
+            </ng-datepicker>
+          </div>
+          <div class="form-group">
+            <label for="pwd">Recording Label:</label>
+            <input (focus)="clearError($event)" type="text" class="form-control" id="pwhds" placeholder="Enter password" name="pwd"[(ngModel)]="Upload.labels">
+
+          </div>
+
+          <div class="form-group">
+            <label for="pwd">Country:</label>
+            <input (focus)="clearError($event)"  type="text" class="form-control" id="pwhds" placeholder="Enter password" name="pwd"[(ngModel)]="Upload.origin">
+
+          </div>
+          <div class="form-group">
+            <label for="text">ISRC(Optional):</label>
+            <input (focus)="clearError($event)"  type="text" class="form-control" id="pwdvvvs" placeholder="Enter password" name="pwd"[(ngModel)]="Upload.Iscr">
+          </div>
+          <div class="form-group">
+
+          </div>
+
+          </div>
+          <div class="alert alert-danger"*ngIf="messageError">
+            <strong >{{messageError}}</strong>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-success">Create</button>
+
+        </form>
+
+        <div *ngIf="showuplaodform">
+
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>Tittle</th>
+                <th>Genre</th>
+                <th>Recording Label</th>
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>1</td>
+                <td>{{Details.response.details.title}}</td>
+                <td>{{Details.response.details.genre}}</td>
+                <td>{{Details.response.details.label}}</td>
+
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+        <label for="text">Song Cover:</label>
+
+        <input name="cover" [(ngModel)]="Upload.fileupload" #fileInputpic type="file"  (change)="addPic($event)"/>
+
+        <p style="color: red" *ngIf="ErrorMessagepic">
+          {{ErrorMessagepic}}
+        </p>
+
+        <label for="text">Mp3 File:</label>
+        <input name="cover" [(ngModel)]="Upload.fileupload" #fileInputmp3 type="file"  (change)="addMp3($event)"/>
+
+        <p style="color: red" *ngIf="ErrorMessagemp3">
+          {{ErrorMessagemp3}}
+        </p>
+
+        <br>
+
+          <button  type="button"(click)="uplaodFile()" class="btn btn-success">Add</button>
+          <br>
+
+        </div>
+        <div class="alert alert-success" *ngIf="showSuccesMessage">
+          <strong>Successfully Uploaded wait for the Admin approval</strong>
+          <br>
+          <br>
+          <br>
+          <button (click)="goDash()"type="button" class="btn btn-info">Ok</button>
+        </div>
+      </div>
+
+    </div>
+    <div id="ab" class="tab-pane fade">
+      <h3>Menu 1</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <div id="vd" class="tab-pane fade">
+      <h3>Menu 2</h3>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+    </div>
+    <div id="mv" class="tab-pane fade">
+      <h3>Menu 3</h3>
+      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+  </div>
+</div>
